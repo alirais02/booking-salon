@@ -16,12 +16,6 @@ public class ReservationService {
     	PrintService.printAllServices(MenuService.serviceList);
     	List<Service> service = ValidationService.validateServiceId(MenuService.serviceList, MenuService.input);
     	
-    	double totalBooking = 0;
-    	
-    	for(Service s : service) {
-    		totalBooking += s.getPrice();
-    	}
-    	
     	String workstage = "In Process";
     	
     	lastOrderId++;
@@ -30,7 +24,7 @@ public class ReservationService {
 		Reservation reservation = new Reservation(reservationId, customer, employee, service, workstage);
 		MenuService.reservationList.add(reservation);
 		System.out.println("Resevation berhasil dibuat");
-		System.out.printf("Total Booking : Rp%.0f\n", totalBooking);
+		System.out.printf("Total Booking : Rp%.0f\n", reservation.getReservationPrice());
     }
 
     public static void editReservationWorkstage(){

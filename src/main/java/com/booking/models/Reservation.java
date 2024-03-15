@@ -32,6 +32,20 @@ public class Reservation {
     };
 
     private double calculateReservationPrice(){
-        return 0;
+        double servicePrice = calculateServicePrice();
+        if(customer.getMember().getMembershipName().equalsIgnoreCase("Silver")) {
+        	servicePrice = servicePrice + (servicePrice * 0.05);
+        }else if(customer.getMember().getMembershipName().equalsIgnoreCase("Gold")) {
+        	servicePrice = servicePrice + (servicePrice * 0.1);
+        }
+        return servicePrice;
+    }
+    
+    private double calculateServicePrice() {
+    	double result = 0;
+    	for(Service service : services) {
+    		result += service.getPrice();
+    	}
+    	return result;
     }
 }

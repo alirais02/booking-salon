@@ -27,8 +27,7 @@ public class ReservationService {
     	lastOrderId++;
 		String reservationId = String.format("Rsv-%02d", lastOrderId);
 		
-		Reservation reservation = new Reservation(reservationId, customer, employee, service, totalBooking, workstage);
-		
+		Reservation reservation = new Reservation(reservationId, customer, employee, service, workstage);
 		MenuService.reservationList.add(reservation);
 		System.out.println("Resevation berhasil dibuat");
 		System.out.printf("Total Booking : Rp%.0f\n", totalBooking);
